@@ -1,13 +1,19 @@
-import EditForm from './EditForm';
 import Form from './Form'
 import TodoTask from './TodoTask'
 import { ModalProvider } from '../context/modal';
 import { useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
+import Alert from './Alert'
+import { useAlert } from '../context/alert'
 uuidv4();
 
-const Wrapper = () => {
-  const [todos, setTodos] = useState([])
+  
+  let noTasks = `
+  You don't have any tasks yet.
+  To add a new task, click on the button above.
+  `;
+  const Wrapper = () => {
+    const [todos, setTodos] = useState([])
 
   const addTask = (task) => {
     setTodos([...todos, 
@@ -15,8 +21,7 @@ const Wrapper = () => {
         id: uuidv4(), 
         name: task.name,
         description: task.description, 
-        completed: false, 
-        isEditing: false
+        completed: false
       }])
   }
 
@@ -26,43 +31,58 @@ const Wrapper = () => {
         todo.id === id ? {...todo, completed: !todo.completed} : todo
       )
     )
+    console.log('complete state changed')
   }
+  const { isAlertOpen, showAlert, hideAlert } = useAlert();
 
   const deleteTask = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id))
-  }
-
-  const toggleEdit = (id) => {
-    setTodos(
-      todos.map((task) => 
-        task.id === id ? {...task, isEditing: !task.isEditing} : task
-      )
-    )
+    showAlert('deleteAlert');
+    hideAlert('deleteAlert');
   }
 
   const editTask = (task, id) => {
     setTodos(
       todos.map((todo) => 
-        todo.id === id ? {...todo, task, isEditing: !todo.isEditing} : todo
+        todo.id === id ? {...todo, name: task.name, description: task.description} : todo
       )
     )
   }
+  
   return (
-      <div className="flex flex-col bg-white gap-5 p-5 justify-center items-center">
-        <div className="flex flex-row gap-5 justify-center items-center">
-          <Form addTask={addTask}/>
-        </div>
-        {todos.map((task, index) => (
-          task.isEditing ? ( <EditForm editTask={editTask} task={task}/> ) :
-          ( <TodoTask 
-            key={index} 
-            task={task} 
-            toggleComplete={toggleComplete} 
-            deleteTask={deleteTask} 
-            toggleEdit={toggleEdit}/> 
-            )
-        ))}
+    <div className='flex items-center justify-center'>
+      {
+      isAlertOpen('editAlert') ? (<Alert msg='Succesfully edited the task!' id='editAlert' />) : null}
+      {isAlertOpen('deleteAlert') ? (<Alert msg='Succesfully deleted the task!' id='deleteAlert' />) : null}
+      <div className="flex flex-col bgList gap-5 p-5 justify-center items-center rounded-2xl golden_border w-full text-gray-800">
+      <div className='flex flex-col  gap-5 px-5 py-2 w-2/3'>
+        <h1>My ToDo List</h1>
+        <h3>Click on "Add Task" to create a new task</h3>
+        <h3>After created, you can visualize, edit or delete an existing task easily!</h3>
       </div>
+      <div className="flex flex-row gap-5 justify-center items-center">
+        <Form addTask={addTask}/>
+      </div>
+      <h2 className='text-2xl'>My Tasks:</h2>
+      {todos.length === 0 ? (
+        <p className='flex justify-center items-center text-xl whitespace-pre-line break-words'>
+          {noTasks}
+        </p>
+      ) : (
+        <div className='flex flex-col m-5 gap-5'>
+          {todos.map((task, index) => (
+            <TodoTask 
+              key={index} 
+              task={task} 
+              toggleComplete={toggleComplete} 
+              deleteTask={deleteTask} 
+              editTask={editTask}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
   )
 }
 
