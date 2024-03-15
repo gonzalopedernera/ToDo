@@ -28,28 +28,29 @@ const Form = ({ addTask }) => {
   }
 
   return (
-    <TaskModal text="Add Task" isBttn={true} id='CreateModal'>
-      <div className="flex flex-col justify-center items-center gap-5 p-5">
-        <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center gap-5 p-5'>
+    <TaskModal text="Add new Task" isBttn={true} id='CreateModal'>
+      <div className="flex flex-col justify-center items-center gap-5 p-5 rounded-2xl">
+        <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center gap-5 p-5 text-white'>
           <input 
             type="text" 
             name="name"
             placeholder="Task name" 
             value={task.name} 
             onChange={handleChange}
-            className="input input-bordered w-full max-w-xs"  
+            className="input input-bordered w-full max-w-xs" 
+            maxLength={35} 
           />
-          <input 
+          <textarea 
             type="text" 
             name="description"
             placeholder="Task description" 
             value={task.description} 
             onChange={handleChange}
-            className="input input-bordered w-full max-w-xs"  
+            className="textarea textarea-bordered w-full max-w-xs"  
           />
           <div className="flex flex-row gap-5 justify-center items-center">
             <button className="btn" type="submit">Submit</button>
-            <button className="btn bg-red-500" onClick={handleCancel}>Cancel</button>
+            <button className="btn btn-error" onClick={handleCancel}>Cancel</button>
           </div>
         </form>
       </div>
