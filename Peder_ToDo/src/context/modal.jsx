@@ -17,6 +17,7 @@ export const ModalProvider = ({ children }) => {
       ...prevState,
       [modalId]: false
     }));
+    console.log(modalState[modalId])
   };
 
   const isModalOpen = (modalId) => {
