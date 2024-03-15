@@ -1,6 +1,6 @@
 import { useModal } from "../context/modal"
 
-const TaskModal = ({ text, img, children, isBttn, id, isCompleted}) => {
+const TaskModal = ({ text, children, isBttn, id, isCompleted}) => {
   const { isModalOpen, openModal } = useModal()
 
   return (
@@ -9,9 +9,7 @@ const TaskModal = ({ text, img, children, isBttn, id, isCompleted}) => {
       'btn  btn-neutral' : 
       `p-5 text-black min-w-72 justify-center items-start ${isCompleted ? 'line-through bgTaskCompleted' : 'bgTask'}`}`} 
       onClick={() => openModal(id)}>
-        {
-        img ? <img src={img} alt={text} className='svg-icon'/> : text
-      }
+        {text}
       </button>
       {isModalOpen(id) ?
       (
@@ -20,7 +18,6 @@ const TaskModal = ({ text, img, children, isBttn, id, isCompleted}) => {
           {children}
         </div>
       </div>
-
       ) : null
   }
     </div>

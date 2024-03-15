@@ -6,7 +6,6 @@ import { v4 as uuidv4 } from 'uuid'
 import Alert from './Alert'
 import { useAlert } from '../context/alert'
 uuidv4();
-
   
   let noTasks = `
   You don't have any tasks yet.
@@ -31,7 +30,6 @@ uuidv4();
         todo.id === id ? {...todo, completed: !todo.completed} : todo
       )
     )
-    console.log('complete state changed')
   }
   const { isAlertOpen, showAlert, hideAlert } = useAlert();
 
@@ -51,8 +49,7 @@ uuidv4();
   
   return (
     <div className='flex items-center justify-center'>
-      {
-      isAlertOpen('editAlert') ? (<Alert msg='Succesfully edited the task!' id='editAlert' />) : null}
+      {isAlertOpen('editAlert') ? (<Alert msg='Succesfully edited the task!' id='editAlert' />) : null}
       {isAlertOpen('deleteAlert') ? (<Alert msg='Succesfully deleted the task!' id='deleteAlert' />) : null}
       <div className="flex flex-col bgList gap-5 p-5 justify-center items-center rounded-2xl golden_border w-full text-gray-800">
       <div className='flex flex-col  gap-5 px-5 py-2 w-2/3'>
@@ -68,7 +65,7 @@ uuidv4();
         <p className='flex justify-center items-center text-xl whitespace-pre-line break-words'>
           {noTasks}
         </p>
-      ) : (
+        ) : (
         <div className='flex flex-col m-5 gap-5'>
           {todos.map((task, index) => (
             <TodoTask 

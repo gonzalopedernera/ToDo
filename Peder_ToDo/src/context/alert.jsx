@@ -6,11 +6,11 @@ export const AlertProvider = ({ children }) => {
   const [alert, setAlert] = useState({});
 
   const showAlert = (alertId) => {
-      setAlert(prevState => ({
-        ...prevState,
-        [alertId]: true
-      }));
-    }
+    setAlert(prevState => ({
+      ...prevState,
+      [alertId]: true
+    }));
+  };
 
   const hideAlert = (alertId) => {
     setTimeout(() => {

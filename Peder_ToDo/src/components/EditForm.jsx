@@ -20,8 +20,6 @@ const EditForm = ({ editTask, task }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     editTask(updatedTask, task.id);
-    console.log(`added task: ${task}`)
-    // setUpdatedTask({name: task.name, description: task.description});
     closeModal('EditModal')
     showAlert('editAlert');
     hideAlert('editAlert');
