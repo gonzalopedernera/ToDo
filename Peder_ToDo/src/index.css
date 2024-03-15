@@ -2,12 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+
+.bgList {
+  background-color: #ffc99d;
+}
+
+.bgTask {
+  background-color: #eaffd1;
+}
+
+.bgTaskCompleted {
+  background-color: #ecffdf;
+}
+
+.golden_border {
+  border: 4px solid #E5C100;
+  border-radius: 16px;
+}
+
 .svg-icon {
   width: 1.5em;
   height: 1.5em;
-  vertical-align: -0.125em;
+  /* vertical-align: -0.125em; */
   fill: currentColor;
   overflow: hidden;
+}
+
+.taskContainer {
+  width: 350px;
+  max-width: 350px;
+}
+
+.taskContent {
+  width: 300px;
+  max-width: 300px;
+}
+
+.alertTransition {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.alertTransition.active {
+  opacity: 0.6;
+}
+
+.alertTransition.inactive {
+  opacity: 0;
 }
 
 :root {
