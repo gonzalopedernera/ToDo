@@ -48,10 +48,10 @@ uuidv4();
   }
   
   return (
-    <div className='flex items-center justify-center'>
+    <div className='flex items-center justify-center shadow-md'>
       {isAlertOpen('editAlert') ? (<Alert msg='Succesfully edited the task!' id='editAlert' />) : null}
       {isAlertOpen('deleteAlert') ? (<Alert msg='Succesfully deleted the task!' id='deleteAlert' />) : null}
-      <div className="flex flex-col bgList gap-5 p-5 justify-center items-center rounded-2xl golden_border w-full text-gray-800">
+      <div className="flex flex-col bgList gap-5 p-5 justify-center items-center rounded-2xl border border-black w-full text-gray-800">
       <div className='flex flex-col  gap-5 px-5 py-2 w-2/3'>
         <h1>My ToDo List</h1>
         <h3>Click on "Add Task" to create a new task</h3>
