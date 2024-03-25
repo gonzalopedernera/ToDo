@@ -5,9 +5,9 @@ const TaskModal = ({ text, children, isBttn, id, isCompleted}) => {
 
   return (
     <div>
-      <button className={`${isBttn ? 
-      'btn  bg-teal-500 hover:bg-teal-400 text-black ' : 
-      `p-5 text-black min-w-72 justify-center items-start border border-black hover:bg-opacity-50 ${isCompleted ? 'line-through bgTaskCompleted' : 'bgTask'}`}`} 
+      <button className={`${isBttn && text !== "Add new Task" ? 
+      'btn  btn-neutral' : isBttn && text === "Add new Task" ? 'btn  bg-teal-500 hover:bg-teal-400 text-black ' :
+      `p-5 text-black text-xl min-w-72 justify-center items-start border border-black hover:bg-opacity-50 ${isCompleted ? 'line-through bgTaskCompleted' : 'bgTask'}`}`} 
       onClick={() => openModal(id)}>
         {text}
       </button>

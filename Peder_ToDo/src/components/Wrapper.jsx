@@ -1,7 +1,6 @@
 import Form from './Form'
 import TodoTask from './TodoTask'
-import { ModalProvider } from '../context/modal';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import Alert from './Alert'
 import { useAlert } from '../context/alert'
@@ -14,14 +13,23 @@ uuidv4();
   const Wrapper = () => {
     const [todos, setTodos] = useState([])
 
+  useEffect(() => {
+    const storedTodos = JSON.parse(localStorage.getItem('todos'));
+    if (storedTodos) {
+      setTodos(storedTodos);
+    }
+  }, []);
+
   const addTask = (task) => {
-    setTodos([...todos, 
+    const updateTodos = [...todos, 
       {
         id: uuidv4(), 
         name: task.name,
         description: task.description, 
         completed: false
-      }])
+      }]
+    setTodos(updateTodos)
+    localStorage.setItem('todos', JSON.stringify(updateTodos))
   }
 
   const toggleComplete = (id) => {
@@ -60,24 +68,26 @@ uuidv4();
       <div className="flex flex-row gap-5 justify-center items-center">
         <Form addTask={addTask}/>
       </div>
-      <h2 className='text-2xl'>My Tasks:</h2>
-      {todos.length === 0 ? (
-        <p className='flex justify-center items-center text-xl whitespace-pre-line break-words'>
-          {noTasks}
-        </p>
-        ) : (
-        <div className='flex flex-col m-5 gap-5'>
-          {todos.map((task, index) => (
-            <TodoTask 
-              key={index} 
-              task={task} 
-              toggleComplete={toggleComplete} 
-              deleteTask={deleteTask} 
-              editTask={editTask}
-            />
-          ))}
-        </div>
-      )}
+      <div>
+        <h2 className='text-2xl'>My Tasks:</h2>
+        {todos.length === 0 ? (
+          <p className='flex justify-center items-center text-xl whitespace-pre-line break-words'>
+            {noTasks}
+          </p>
+          ) : (
+          <div className='flex flex-col m-5 gap-5'>
+            {todos.map((task, index) => (
+              <TodoTask 
+                key={index} 
+                task={task} 
+                toggleComplete={toggleComplete} 
+                deleteTask={deleteTask} 
+                editTask={editTask}
+              />
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   </div>
   )

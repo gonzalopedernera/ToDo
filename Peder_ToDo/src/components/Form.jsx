@@ -17,7 +17,6 @@ const Form = ({ addTask }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     addTask(task);
-    console.log(`added task: ${task.name}`)
     setTask({name: '', description: ''});
     closeModal('CreateModal')
   }
@@ -30,11 +29,11 @@ const Form = ({ addTask }) => {
   return (
     <TaskModal text="Add new Task" isBttn={true} id='CreateModal'>
       <div className="flex flex-col justify-center items-center gap-5 p-5 rounded-2xl">
-        <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center gap-5 p-5 text-white'>
+        <form onSubmit={handleSubmit} className='flex flex-col justify-center items-center gap-5 p-5 text-white text-base'>
           <input 
             type="text" 
             name="name"
-            placeholder="Task name" 
+            placeholder="Name (max 35 characters)" 
             value={task.name} 
             onChange={handleChange}
             className="input input-bordered w-full max-w-xs" 
@@ -43,7 +42,7 @@ const Form = ({ addTask }) => {
           <textarea 
             type="text" 
             name="description"
-            placeholder="Task description" 
+            placeholder="Description" 
             value={task.description} 
             onChange={handleChange}
             className="textarea textarea-bordered w-full max-w-xs"  
