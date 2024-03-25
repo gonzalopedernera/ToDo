@@ -24,6 +24,7 @@ The current functionalities of my ToDo list are:
 ## Demo:
 
 /*Placeholder*/
-[<img src="[https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg](https://imgur.com/a/U4wSgjV)" width="50%">](https://www.youtube.com/watch?v=Hc79sDi3f0U)
+https://github.com/gonzalopedernera/ToDo/assets/124638020/19f1e695-9bb3-4499-8fe6-9ea1c69da34b
+
 
 Any constructive criticism is welcome!
