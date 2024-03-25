@@ -24,6 +24,6 @@ The current functionalities of my ToDo list are:
 ## Demo:
 
 /*Placeholder*/
-[![Watch the video]()]([https://youtu.be/vt5fpE0bzSY](https://youtu.be/zXkZy8ojLtQ))
+[![Watch the video](https://imgur.com/a/U4wSgjV)]([https://youtu.be/vt5fpE0bzSY](https://youtu.be/zXkZy8ojLtQ))
 
 Any constructive criticism is welcome!
