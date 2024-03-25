@@ -24,6 +24,6 @@ The current functionalities of my ToDo list are:
 ## Demo:
 
 /*Placeholder*/
-[![Watch the video](https://imgur.com/a/U4wSgjV)]([https://youtu.be/vt5fpE0bzSY](https://youtu.be/zXkZy8ojLtQ))
+[<img src="[https://i.ytimg.com/vi/Hc79sDi3f0U/maxresdefault.jpg](https://imgur.com/a/U4wSgjV)" width="50%">](https://www.youtube.com/watch?v=Hc79sDi3f0U)
 
 Any constructive criticism is welcome!
