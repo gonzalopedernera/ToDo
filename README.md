@@ -23,6 +23,6 @@ The current functionalities of my ToDo list are:
 
 ## Demo:
 
-/*Placeholder*/
+https://github.com/gonzalopedernera/ToDo/assets/124638020/0eeda548-6cbb-47db-9bdf-e3459f02e40f
 
 Any constructive criticism is welcome!

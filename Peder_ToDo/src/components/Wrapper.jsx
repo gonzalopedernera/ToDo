@@ -42,7 +42,9 @@ uuidv4();
   const { isAlertOpen, showAlert, hideAlert } = useAlert();
 
   const deleteTask = (id) => {
-    setTodos(todos.filter((todo) => todo.id !== id))
+    const updateTodos = todos.filter((todo) => todo.id !== id)
+    setTodos(updateTodos)
+    localStorage.setItem('todos', JSON.stringify(updateTodos))
     showAlert('deleteAlert');
     hideAlert('deleteAlert');
   }
@@ -75,7 +77,7 @@ uuidv4();
             {noTasks}
           </p>
           ) : (
-          <div className='flex flex-col m-5 gap-5'>
+          <div className='grid grid-cols-2 m-5 gap-5'>
             {todos.map((task, index) => (
               <TodoTask 
                 key={index} 
